@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,423;1,372&display=swap" rel="stylesheet">
+    <link href="/chat/index.css" rel="stylesheet" >
+    <!-- <link rel="stylesheet" href="/board/style.css"    > -->
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet"  >
+    
+</head>
+<style type="text/css">
+    .site-link{
+  padding: 5px 15px;
+        position: fixed;
+        z-index: 99999;
+        background: #fff;
+        box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+        right: 30px;
+        bottom: 30px;
+        border-radius: 10px;
+    }
+    .site-link img{
+        width: 30px;
+        height: 30px;
+    }
+</style>
+<body >
+    <p id="rid" style="display: none;"><%-room_id%></p>
+    <p id="uid" style="display: none;"><%-userDetails._id%></p>
+<div class=" backcomp" >
+    
+    <div class=" row  topnav" >
+        <div class="col">
+            <div class="float-right mt-3" >
+                <div  style="padding-right: 40px;" class="header">
+                    <h4 style="padding-left: 40px;"><b><%-room_data.subject%></b></h4>
+
+                </div>
+                <input class="form-check-input" type="checkbox" id="theme" style="display: none;">
+                <label  style="display: none;" for="theme" class="form-check-label">
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class=" row" >
+        <div class="col-lg-2 divnav ">
+          
+                <div class="sidenav" style="margin-left: 0px;width:300px"> 
+                    <div class="nav-header">
+                        <div class="nav-title" style="margin-top: 1px;margin-bottom: 1px;">
+                             <%=userDetails.type%>
+                     </div>
+                    <div class="logoimg">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                         width="50" height="50" viewBox="0 0 172 172";
+                       style=" fill:#000000;margin-bottom:15px"><g fill="none" fill-rule="nonzero" 
+                       stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" 
+                       stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" 
+                       font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M89.1175,11.2875c-32.12906,0.72563 -35.77062,24.20094 -28.9175,51.2775c-1.075,0.72563 -3.26531,3.30563 -2.9025,7.6325c1.075,7.94156 4.32688,10.105 6.1275,10.105c0.72563,5.41531 3.27875,11.11281 5.805,14.7275c1.80063,2.52625 2.4725,5.77813 2.4725,9.03c0,2.88906 0.04031,1.04813 -0.3225,4.3c-0.36281,1.04813 -0.87344,2.00219 -1.505,2.9025c0.73906,2.78156 4.99875,16.0175 19.565,16.0175c14.91563,0 18.92,-14.28406 19.35,-16.0175c-0.67187,-0.88687 -1.20937,-1.85437 -1.6125,-2.9025c-0.36281,-3.96406 -0.43,-2.12312 -0.43,-5.375c0,-2.88906 1.12875,-5.36156 2.58,-7.525c2.52625,-3.61469 4.97188,-9.74219 5.6975,-15.1575c2.17688,0 5.40188,-2.16344 6.1275,-10.105c0.36281,-4.32687 -1.34375,-6.90687 -2.795,-7.6325c3.61469,-10.105 10.41406,-41.46812 -12.685,-44.72c-2.52625,-4.32687 -8.61344,-6.5575 -16.555,-6.5575zM114.4875,116.1c-2.88906,7.68625 -10.535,18.06 -25.0475,18.06c-14.52594,0 -22.145,-10.18562 -25.155,-17.9525c-14.2975,8.80156 -43.43,11.5025 -43.43,42.0325h137.17c0,-31.30937 -28.99812,-33.45937 -43.5375,-42.14z"></path></g></g></svg>
+                    </div> 
+                       <div class="nav-title" style="margin-top: 4px;margin-bottom: 1px;">
+                            <%=userDetails.name%>
+                    </div>
+                       
+                      </div>
+                   
+                      <a href="#" onclick="clickmodal2()">Room Info</a>
+                      <a href="#">History</a>
+                      <a href="#" onclick="clickmodal()">Question</a>
+                      <a id="exit_peer" href="/dash/<%= userDetails._id %>">Exit</a>
+                      <div id="myModal" class="modal nodisp" >
+                        <span class="close">&times;</span>
+                        <img class="modal-content" src="data:image/<%=ques_data.image.contentType%>;base64,<%=ques_data.image.data.toString('base64')%>" alt="Question" id="img01">
+                        <div id="caption"><%-ques_data.description%></div>
+                    </div>
+                    <div id="myModal2" class="modal nodisp" >
+                        <span class="close2">&times;</span>
+                        <div class="rowmodal modal-content" style="background-color: rgb(221, 217, 217);" >
+                            <div class="col" style="padding:5px 5px 15px 5px;margin:5px 5px 15px 5px;">
+                                <h3>Student</h3>
+                                <h4>Name     :<span> <%-student_data.name%></span></h4>
+                                    <h4>Bio      :<span> <%-student_data.bio%></span></h4>
+                                    <h4>Std      :<span> <%-student_data.std%></span></h4>
+                            </div>
+                            <div class="col"  style="padding:5px 5px 15px 5px;margin:5px 5px 15px 5px;">
+                                <h3>Tutor</h3>
+                                <h4>Name     : <%-tutor_data.name%></h4>
+                                <h4>Subjects : <%- tutor_data.subjects%></h4>
+                                <h4>Bio      : <%- tutor_data.bio%></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <%if(userDetails.type == "Student") { %>
+                        <form id="deletebutton" action="/dash/room/<%=room_data._id%>/ques/<%= ques_data._id %>/delete" method="GET"> 
+                            <button id="closeroom"  class="btn btn-lg btn-danger">Close Room</button>
+                        </form>
+                    <% } %>
+                </div>
+
+        </div>
+        <div class="col divboard">
+            <canvas class="whiteboard" ></canvas>
+            <div class="colors">
+              <div class="color black"></div>
+              <div class="color red"></div>
+              <div class="color green"></div>
+              <div class="color blue"></div>
+              <div class="color yellow"></div>
+            </div>
+        </div>
+        <div class="col  divchat">
+            <div class="row">
+                <div  id="textchat" >
+                    <div class="body ">
+                        <div class="chat-cont">
+                            <div class="chat-header">
+                                <div class="name">
+                                    <%if(userDetails.type == "Student") { %>
+                                        <span id="use"> <%tutor_data.name%></span>
+                                    <% } %>
+                                    <%if(userDetails.type == "Tutor") { %>
+                                        <span id="use"> <%student_data.name%></span>
+                                    <% } %>
+                                </div>
+                                <div class="menu">
+                                    <span class="attach">
+                                        <input type="file" name="">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="chat-body">
+                                <div class="chats-text-cont">
+                                    
+                                </div>
+                            </div>
+                            <div class="chat-inp">
+                                <div class="emoji"></div>
+                                <div class="chat-input">
+                                    <div class="input" contenteditable="true"></div>
+                                </div>
+                                <div class="opts">
+                                    <a class="mic"></a>
+                                    <a class="send"></a>
+                                </div>
+                            </div>
+                            <div class="emoji-dashboard">
+                                <ul class="emojis">
+                                    <li class="emoji" data-clipboard-text="--1"><i class="em em---1"></i></li>
+                                    <li class="emoji" data-clipboard-text="-1"><i class="em em--1"></i></li>
+                                    <li class="emoji" data-clipboard-text="100"><i class="em em-100"></i></li>
+                                    <li class="emoji" data-clipboard-text="1234"><i class="em em-1234"></i></li>
+                                    <li class="emoji" data-clipboard-text="8ball"><i class="em em-8ball"></i></li>
+                                    <li class="emoji" data-clipboard-text="a"><i class="em em-a"></i></li>
+                                    <li class="emoji" data-clipboard-text="ab"><i class="em em-ab"></i></li>
+                                    <li class="emoji" data-clipboard-text="abc"><i class="em em-abc"></i></li>
+                                    <li class="emoji" data-clipboard-text="abcd"><i class="em em-abcd"></i></li>
+                                    <li class="emoji" data-clipboard-text="accept"><i class="em em-accept"></i></li>
+                                    <li class="emoji" data-clipboard-text="aerial_tramway"><i class="em em-aerial_tramway"></i></li>
+                                    <li class="emoji" data-clipboard-text="airplane"><i class="em em-airplane"></i></li>
+                                    <li class="emoji" data-clipboard-text="alarm_clock"><i class="em em-alarm_clock"></i></li>
+                                    <li class="emoji" data-clipboard-text="alien"><i class="em em-alien"></i></li>
+                                    <li class="emoji" data-clipboard-text="ambulance"><i class="em em-ambulance"></i></li>
+                                    <li class="emoji" data-clipboard-text="anchor"><i class="em em-anchor"></i></li>
+                                    <li class="emoji" data-clipboard-text="angel"><i class="em em-angel"></i></li>
+                                    <li class="emoji" data-clipboard-text="anger"><i class="em em-anger"></i></li>
+                                    <li class="emoji" data-clipboard-text="angry"><i class="em em-angry"></i></li>
+                                    <li class="emoji" data-clipboard-text="anguished"><i class="em em-anguished"></i></li>
+                                    <li class="emoji" data-clipboard-text="ant"><i class="em em-ant"></i></li>
+                                    <li class="emoji" data-clipboard-text="apple"><i class="em em-apple"></i></li>
+                                    <li class="emoji" data-clipboard-text="aquarius"><i class="em em-aquarius"></i></li>
+                                        <li class="emoji" data-clipboard-text="aries"><i class="em em-aries"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_backward"><i class="em em-arrow_backward"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_double_down"><i class="em em-arrow_double_down"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_double_up"><i class="em em-arrow_double_up"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_down"><i class="em em-arrow_down"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_down_small"><i class="em em-arrow_down_small"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_forward"><i class="em em-arrow_forward"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_heading_down"><i class="em em-arrow_heading_down"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_heading_up"><i class="em em-arrow_heading_up"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_left"><i class="em em-arrow_left"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_lower_left"><i class="em em-arrow_lower_left"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_lower_right"><i class="em em-arrow_lower_right"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_right"><i class="em em-arrow_right"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_right_hook"><i class="em em-arrow_right_hook"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_up"><i class="em em-arrow_up"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_up_down"><i class="em em-arrow_up_down"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_up_small"><i class="em em-arrow_up_small"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_upper_left"><i class="em em-arrow_upper_left"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrow_upper_right"><i class="em em-arrow_upper_right"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrows_clockwise"><i class="em em-arrows_clockwise"></i></li>
+                                        <li class="emoji" data-clipboard-text="arrows_counterclockwise"><i class="em em-arrows_counterclockwise"></i></li>
+                                        <li class="emoji" data-clipboard-text="art"><i class="em em-art"></i></li>
+                                        <li class="emoji" data-clipboard-text="articulated_lorry"><i class="em em-articulated_lorry"></i></li>
+                                        <li class="emoji" data-clipboard-text="astonished"><i class="em em-astonished"></i></li>
+                                        <li class="emoji" data-clipboard-text="atm"><i class="em em-atm"></i></li>
+                                        <li class="emoji" data-clipboard-text="b"><i class="em em-b"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+                <div id="videorow"     class="row">
+                    <div class="col d-flex justify-content-center video_win1">
+                        <div id="peerDiv" class="embed-responsive embed-responsive-16by9">
+                        </div>
+                    </div>
+                   
+                    <div class="row " style="display:none">
+                        <div class="col">
+                            <select id="filter" class="w-100 bg-dark text-light ml-2 mt-2 select font-weight-bold border">
+                                <option value="none">Normal</option>
+                                <option value="grayscale(100%)">B & W</option>
+                                <option value="sepia(100%)">Old School</option>
+                                <option value="contrast(150%)">Lumination</option>
+                                <option value="blur(20px)">Hidden Mist</option>
+                                <option value="invert(100%)">Dracula</option>
+                                <option value="hue-rotate(180deg">X-men Beast</option>
+                                <option value="saturate(25)">Super Saiyan God</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <div class="col d-flex  justify-content-center video_win2">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <video id="myvid" class="embed-responsive-item" muted></video>
+                        </div>
+                    </div>
+                    <div id="divstop">
+                        <p style="z-index:7;padding-left: 20px;"><i><%- userDetails.name %></i></p>
+                        <button id="stop_him" class="btn btn-md btn-danger">start</button>
+                    </div>
+                    <div id="divpause">
+                    <button id="pause_me" class="btn btn-md btn-primary">pause</button>
+                    </div>
+                </div>
+   
+  </div>
+        
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script>
+  <script src="https://use.fontawesome.com/aa95071b26.js"></script>
+  <script src="/chat/SimplePeer.min.js"></script>
+        <!-- <script src="/socket.io/socket.io.js"></script> -->
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+        <script src="/chat/index.js"></script>
+
+       
+    </body>
+    
+    </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

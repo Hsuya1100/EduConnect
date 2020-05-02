@@ -1,0 +1,86 @@
+
+<html>
+	<head>
+		<title>Register</title>
+		 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+		 <link rel="stylesheet" href="stylesheets/css/register.css"> 
+	</head> 
+  <body>
+
+	
+		  <div class="nav">
+			
+			<input type="checkbox" id="nav-check">
+			<div class="nav-header">
+				<img class="logoimg" src="stylesheets/img/other/favicon.png" alt="Logo"/>
+			  <div class="nav-title">
+				 EduConnect
+			  </div>
+			 
+			</div>
+			<div class="nav-btn">
+			  <label for="nav-check">
+				<span></span>
+				<span></span>
+				<span></span>
+			  </label>
+			</div>
+
+            <div class="nav-links">
+			<%  if(!userDetails){ %>
+				<a href="/" target="_blank">About</a>
+				<a href="/login" target="_blank">Login</a>
+				<a href="/register" target="_blank">SignUp</a>
+			  
+		  <% } else{  %>
+				 
+				  <a class="nav-link " href="/campgrounds"> Logged in as <%=userDetails.username%></a>	 
+				  <a class="nav-link " href="/logout">Logout</a>
+				 
+			<%  }  %>	
+
+		</div>
+	
+		  </div>
+  
+    
+		<%	if(error && error.length>0){ %>
+			<div class="container">
+				<div class="alert alert-danger" role="alert">
+					<h4><%= error %></h4>
+				</div>
+			</div>
+		<%	} %>
+		<% if(success && success.length>0){ %>	
+			<div class="container">
+				<div class="alert alert-success" role="alert">
+					<h4><%= success %></h4>
+				</div>
+			</div>
+		<%} %>
+ 
+
+
+
+	  <div class="box">
+		  <form class="register-form" action="/register" method="POST">
+			  <h1>Let's Register</h1>
+			  <input type="text" name="username" placeholder="Username" required>
+			  <input type="password" name="password" placeholder="Password" required>
+			  <input type="submit" name="signUp" value="SignUp">
+			  
+			   <!-- <div class="links1">
+		
+				  <a href="/register">Sign Up </a>
+			 <a href="/"> Home</a></div>
+				 
+			  </div> -->
+			  </button>
+		  </form>
+		  
+	  </div>
+  </body>
+  
+  </html>
+  

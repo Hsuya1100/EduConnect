@@ -1,0 +1,98 @@
+
+<html>
+	<head>
+		<title>FAQ</title>
+		 <!-- <l1ink rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+		<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> -->
+         <!--  -->
+         <!-- Font Awesome -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+		<!-- Google Fonts -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+		<!-- Bootstrap core CSS -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Material Design Bootstrap -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+        <!-- can use /posts.css or posts.css -->
+        <link rel="stylesheet" href="../../stylesheets/css/profile.css">
+    </head> 
+     <style>
+</style> 
+
+<body>
+	<%	if(error && error.length>0){ %>
+		<div class="container">
+			<div class="alert alert-danger" role="alert">
+				<h4><%= error %></h4>
+			</div>
+		</div>
+	<%	} %>
+	<% if(success && success.length>0){ %>	
+		<div class="container">
+			<div class="alert alert-success" role="alert">
+				<h4><%= success %></h4>
+			</div>
+        </div>
+    <%} %> 
+
+
+<div class="container">
+   <div class="sidenav" style="margin-left: 0px;width:300px"> 
+                    <div class="nav-header">
+                        <div class="nav-title" style="margin-top: 1px;margin-bottom: 1px;">
+                             <%=userDetails.type%>
+                     </div>
+                    <div class="logoimg">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                         width="50" height="50" viewBox="0 0 172 172";
+                       style=" fill:#000000;margin-bottom:15px"><g fill="none" fill-rule="nonzero" 
+                       stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" 
+                       stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" 
+                       font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M89.1175,11.2875c-32.12906,0.72563 -35.77062,24.20094 -28.9175,51.2775c-1.075,0.72563 -3.26531,3.30563 -2.9025,7.6325c1.075,7.94156 4.32688,10.105 6.1275,10.105c0.72563,5.41531 3.27875,11.11281 5.805,14.7275c1.80063,2.52625 2.4725,5.77813 2.4725,9.03c0,2.88906 0.04031,1.04813 -0.3225,4.3c-0.36281,1.04813 -0.87344,2.00219 -1.505,2.9025c0.73906,2.78156 4.99875,16.0175 19.565,16.0175c14.91563,0 18.92,-14.28406 19.35,-16.0175c-0.67187,-0.88687 -1.20937,-1.85437 -1.6125,-2.9025c-0.36281,-3.96406 -0.43,-2.12312 -0.43,-5.375c0,-2.88906 1.12875,-5.36156 2.58,-7.525c2.52625,-3.61469 4.97188,-9.74219 5.6975,-15.1575c2.17688,0 5.40188,-2.16344 6.1275,-10.105c0.36281,-4.32687 -1.34375,-6.90687 -2.795,-7.6325c3.61469,-10.105 10.41406,-41.46812 -12.685,-44.72c-2.52625,-4.32687 -8.61344,-6.5575 -16.555,-6.5575zM114.4875,116.1c-2.88906,7.68625 -10.535,18.06 -25.0475,18.06c-14.52594,0 -22.145,-10.18562 -25.155,-17.9525c-14.2975,8.80156 -43.43,11.5025 -43.43,42.0325h137.17c0,-31.30937 -28.99812,-33.45937 -43.5375,-42.14z"></path></g></g></svg>
+                    </div> 
+                       <div class="nav-title" style="margin-top: 4px;margin-bottom: 1px;">
+                            <%=userDetails.name%>
+                    </div>
+                       
+                      </div>
+        <a href="/dash/<%=userDetails._id%>">  Home </a>
+        <a href="/user/profile/<%=userDetails._id%>"> Profile</a>
+        <a href="#">History</a>
+        <a href="/dash/faq/<%=userDetails._id%>"  class="active-page"> FAQ </a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<div class="container" style="padding-left:0px;">
+<nav class="navbar navbar-light bg-light" style="margin:left:0px;width:90rem;box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.1), 0 3px 15px 0 rgba(0, 0, 0, 0.1);">
+	<span class="nvnv navbar-brand mb-0 h1">Frequently Asked Questions </span>
+  </nav>
+  <br>
+  <br>
+	<div class="container">
+	<button class="accordion">Is there facility to upload question in image form ?</button>
+	<div class="panel">
+	  <p>Yes.</p>
+	</div>
+	
+	<button class="accordion">The interaction is in which form ?</button>
+	<div class="panel">
+	  <p> One to one interaction is done usually through text chat, whiteboard and video chat.</p>
+	</div>
+	
+	<button class="accordion"> Question 3</button>
+	<div class="panel">
+	  <p> Answer 3</p>
+	</div>
+	</div>
+</div>
+<!-- <div class="container mx-auto  " style="text-align: center; margin-top: 12%;background: #d5dde0;padding-left: 0px;padding-right: 0px;margin-left: 1px;margin-right: 0px">
+	<h1>Profile</h1> -->
+<br>
+
+
+
+
+</body>
+</html>
+<%include ./partials/footer.ejs%>

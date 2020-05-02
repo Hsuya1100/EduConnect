@@ -1,0 +1,1 @@
+sudo add-apt-repository ppa:soylent-tv/screenstudio && sudo apt update && sudo apt install screenstudio 
