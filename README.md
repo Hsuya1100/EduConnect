@@ -6,7 +6,7 @@
 
 ## Run
 
-+ cd SOE_PROJ-master
++ cd EduConnect-master
 + npm install 
 + node app.js
 
