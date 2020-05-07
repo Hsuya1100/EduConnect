@@ -1,5 +1,4 @@
 # EduConnect
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 EduConnect is platform designed for students to get their questions answered with an interactive one to one session with a tutor. A student has not only facility to ask doubts but also to answer others doubts too.
