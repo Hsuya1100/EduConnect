@@ -5,9 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "npx watchify ./public/chat/index.js -o ./public/chat/bundle.js"
-
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "punisher1151",
   "license": "ISC",
@@ -32,8 +30,5 @@
     "session": "^0.1.0",
     "simple-peer": "^9.7.0",
     "socket.io": "^2.3.0"
-  },
-  "devDependencies": {
-    "watchify": "^3.11.1"
   }
 }
