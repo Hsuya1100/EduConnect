@@ -26,89 +26,89 @@ app.listen(app.get('port'), function() {
 })
 
 
-// SOCKET 
-const socket = require("socket.io");
-// SERVER
-app.set('port', (process.env.PORT || 5000));
-var server = app.listen(app.get('port'));
-console.log("server running");
-// for socket
-const io = socket.listen(server);
-//__dirname is whole directory name  
-app.use(express.static(path.join(__dirname, 'public')));
-console.log(__dirname);
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
-app.use('/uploads',express.static(__dirname + "/uploads"));
-app.use(express.static(path.join(__dirname + "/views")));
-app.use(express.static(path.join(__dirname + "/chat")));
+// // SOCKET 
+// const socket = require("socket.io");
+// // SERVER
+// app.set('port', (process.env.PORT || 5000));
+// var server = app.listen(app.get('port'));
+// console.log("server running");
+// // for socket
+// const io = socket.listen(server);
+// //__dirname is whole directory name  
+// app.use(express.static(path.join(__dirname, 'public')));
+// console.log(__dirname);
+// app.engine('html', require('ejs').renderFile);
+// app.set('view engine', 'html');
+// app.use('/uploads',express.static(__dirname + "/uploads"));
+// app.use(express.static(path.join(__dirname + "/views")));
+// app.use(express.static(path.join(__dirname + "/chat")));
 
 
-// MONGODB
+// // MONGODB
 
-//mongoose.connect("mongodb://localhost/EduConnect", { useNewUrlParser: true, useUnifiedTopology: true  },function(err,db){
-//	if(err)
-//		console.log(err);
-//	else
-//		console.log("Connected to DB");
-//});
-// =============================================================
- const uri = "mongodb+srv://admin:admin@cluster0-bdcbs.mongodb.net/EduConnect?retryWrites=true&w=majority"
-  mongoose.connect(uri,{useNewUrlParser: true}, function(err, client) {
-     if(err) {
-          console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
-    }
-    console.log('Connected..D.B.');
- });
-// =============================================================
+// //mongoose.connect("mongodb://localhost/EduConnect", { useNewUrlParser: true, useUnifiedTopology: true  },function(err,db){
+// //	if(err)
+// //		console.log(err);
+// //	else
+// //		console.log("Connected to DB");
+// //});
+// // =============================================================
+//  const uri = "mongodb+srv://admin:admin@cluster0-bdcbs.mongodb.net/EduConnect?retryWrites=true&w=majority"
+//   mongoose.connect(uri,{useNewUrlParser: true}, function(err, client) {
+//      if(err) {
+//           console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
+//     }
+//     console.log('Connected..D.B.');
+//  });
+// // =============================================================
 
-app.use(flash());
-app.use(bodyParser.json({limit: '6mb'}));
-app.use(bodyParser.urlencoded({limit: '6mb',  extended: true,parameterLimit: 1000000}));
+// app.use(flash());
+// app.use(bodyParser.json({limit: '6mb'}));
+// app.use(bodyParser.urlencoded({limit: '6mb',  extended: true,parameterLimit: 1000000}));
 
-//Require Question Schema
-var Question=require("./models/Question.js");
-var PrivateRoom=require("./models/PrivateRoom");
+// //Require Question Schema
+// var Question=require("./models/Question.js");
+// var PrivateRoom=require("./models/PrivateRoom");
 
-// User Schema
-var User=require('./models/user.js'); 
-// var middleware=require("../middleware/index.js");
+// // User Schema
+// var User=require('./models/user.js'); 
+// // var middleware=require("../middleware/index.js");
 
-// Shortened Routes codes Required
-var  DashboardRoutes=require('./routes/dashboard.js');
-var  userRoutes=require('./routes/user.js');
-var  indexRoutes=require('./routes/index.js');
+// // Shortened Routes codes Required
+// var  DashboardRoutes=require('./routes/dashboard.js');
+// var  userRoutes=require('./routes/user.js');
+// var  indexRoutes=require('./routes/index.js');
 
-//==========================================
+// //==========================================
 
-// PASSPORT CONFGI
-app.use(require("express-session")({
-	secret:"NEWHASHKEY",
-	resave:false,
-	saveUninitialized:false
-}))	;
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// // PASSPORT CONFGI
+// app.use(require("express-session")({
+// 	secret:"NEWHASHKEY",
+// 	resave:false,
+// 	saveUninitialized:false
+// }))	;
+// app.use(passport.initialize());
+// app.use(passport.session());
+// passport.use(new LocalStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 
-app.use(function(req,res,next){
-	res.locals.userDetails=req.user;
-	res.locals.error=req.flash("error");
-	res.locals.success=req.flash("success");
-	next();
-});
+// app.use(function(req,res,next){
+// 	res.locals.userDetails=req.user;
+// 	res.locals.error=req.flash("error");
+// 	res.locals.success=req.flash("success");
+// 	next();
+// });
 
 //================================================
 app.get("/",function(req,res){
 	console.log("ROOT REACHED!");
 	res.render("cover.ejs");
 });
-//Refactored routes use
-app.use(indexRoutes);
-app.use("/dash",DashboardRoutes);
-app.use("/user",userRoutes);
+// //Refactored routes use
+// app.use(indexRoutes);
+// app.use("/dash",DashboardRoutes);
+// app.use("/user",userRoutes);
 
 
 // // SOOCKET CODES
