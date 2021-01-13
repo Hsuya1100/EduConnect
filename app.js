@@ -34,14 +34,14 @@ app.listen(app.get('port'), function() {
 // console.log("server running");
 // // for socket
 // const io = socket.listen(server);
-// //__dirname is whole directory name  
-// app.use(express.static(path.join(__dirname, 'public')));
-// console.log(__dirname);
-// app.engine('html', require('ejs').renderFile);
-// app.set('view engine', 'html');
-// app.use('/uploads',express.static(__dirname + "/uploads"));
-// app.use(express.static(path.join(__dirname + "/views")));
-// app.use(express.static(path.join(__dirname + "/chat")));
+//__dirname is whole directory name  
+app.use(express.static(path.join(__dirname, 'public')));
+console.log(__dirname);
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.use('/uploads',express.static(__dirname + "/uploads"));
+app.use(express.static(path.join(__dirname + "/views")));
+app.use(express.static(path.join(__dirname + "/chat")));
 
 
 // // MONGODB
