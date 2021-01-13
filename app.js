@@ -1,18 +1,18 @@
-// var express=require('express');
-// var app=express();
+var express=require('express');
+var app=express();
 // // used for req.body 
-// var bodyParser=require('body-parser');
-// var mongoose=require('mongoose');
+var bodyParser=require('body-parser');
+var mongoose=require('mongoose');
 // // for authentication
-// var passport=require('passport');
-// var LocalStrategy=require('passport-local');
-// var flash=require('connect-flash');
-// var path=require('path');
-// var multer = require('multer');
-// var request=require('request');
+var passport=require('passport');
+var LocalStrategy=require('passport-local');
+var flash=require('connect-flash');
+var path=require('path');
+var multer = require('multer');
+var request=require('request');
 
-var express = require('express')
-var app = express()
+// var express = require('express')
+// var app = express()
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
