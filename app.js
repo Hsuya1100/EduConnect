@@ -4,12 +4,12 @@ var app=express();
 var bodyParser=require('body-parser');
 var mongoose=require('mongoose');
 // // for authentication
-var passport=require('passport');
-var LocalStrategy=require('passport-local');
-var flash=require('connect-flash');
-var path=require('path');
-var multer = require('multer');
-var request=require('request');
+// var passport=require('passport');
+// var LocalStrategy=require('passport-local');
+// var flash=require('connect-flash');
+// var path=require('path');
+// var multer = require('multer');
+// var request=require('request');
 
 // var express = require('express')
 // var app = express()
