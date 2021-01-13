@@ -11,10 +11,13 @@ var path=require('path');
 var multer = require('multer');
 var request=require('request');
 
+
+
 // SOCKET 
 const socket = require("socket.io");
 // SERVER
-var server = app.listen(3000);
+app.set('port', (process.env.PORT || 5000));
+var server = app.listen(app.get('port'));
 console.log("server running");
 // for socket
 const io = socket.listen(server);
