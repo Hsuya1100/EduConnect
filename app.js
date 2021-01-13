@@ -6,8 +6,8 @@ var mongoose=require('mongoose');
 // // for authentication
 var passport=require('passport');
 var LocalStrategy=require('passport-local');
-// var flash=require('connect-flash');
-// var path=require('path');
+var flash=require('connect-flash');
+var path=require('path');
 // var multer = require('multer');
 // var request=require('request');
 
