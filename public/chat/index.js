@@ -408,8 +408,8 @@ var canvas = document.getElementsByClassName('whiteboard')[0];
 
   function drawLine(x0, y0, x1, y1, color, emit){
     context.beginPath();
-    xadj = 200;
-    yadj = 70;
+    xadj = 327;
+    yadj = 127;
     context.moveTo(x0-xadj, y0-yadj);
     context.lineTo(x1-xadj, y1-yadj);
     console.log("\n");
@@ -437,16 +437,20 @@ var canvas = document.getElementsByClassName('whiteboard')[0];
     drawing = true;
     current.x = e.clientX||e.touches[0].clientX;
     current.y = e.clientY||e.touches[0].clientY;
+    console.log("DOWN: "+ e.clientX +" "+e.clientY);
   }
 
   function onMouseUp(e){
     if (!drawing) { return; }
     drawing = false;
+    console.log("UP: "+ e.clientX +" "+e.clientY);
     drawLine(current.x, current.y, e.clientX||e.touches[0].clientX, e.clientY||e.touches[0].clientY, current.color, true);
   }
 
   function onMouseMove(e){
     if (!drawing) { return; }
+    console.log("MOVING1: "+ current.x +" "+current.y);
+    console.log("MOVING2: "+ e.clientX +" "+e.clientY);
     drawLine(current.x, current.y, e.clientX||e.touches[0].clientX, e.clientY||e.touches[0].clientY, current.color, true);
     current.x = e.clientX||e.touches[0].clientX;
     current.y = e.clientY||e.touches[0].clientY;

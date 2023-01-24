@@ -62,9 +62,12 @@ router.post("/login",passport.authenticate("local"),
 
 // LOGOUT
 router.get("/logout",function(req,res){
-	req.logout();
-	req.flash("success","You are logged out");
+	req.logout(function(err) {
+		if (err) { console.log(err); }
+		req.flash("success","You are logged out");
 	res.redirect("/");
+	  });
+	
 });
 
 /*function isLoggedIn(req,res,next){
