@@ -1,5 +1,7 @@
 # EduConnect
 
+## Live: https://edu-test-run.onrender.com/
+## Demo: https://drive.google.com/file/d/1Nki4TiG0hC7j9GuTXJzXZjJnybIBt8_f/view?usp=sharing
 
 EduConnect is platform designed for students to get their questions answered with an interactive one to one session with a tutor. A student has not only facility to ask doubts but also to answer others doubts too.
 
