@@ -14,6 +14,10 @@ EduConnect is platform designed for students to get their questions answered wit
     - Text Chat
     - Video Chat
 
+# ScreenShots
+![Screenshot](1.png)
+![Screenshot](2.png)
+![ScreenShot](3.png)
 ### Tech
 
 EduConenct uses a number of open source projects to work properly:
